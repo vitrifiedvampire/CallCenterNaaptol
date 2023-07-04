@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cost Calculation Automation</title>
+ 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery library -->
+  <link rel="stylesheet" href="style.css"> <!-- Link to external CSS file -->
+  <script src="scripts.js"></script> <!-- Link to external JavaScript file -->
+  
+</head>
+<body>
+  <h1>Cost Calculation Automation</h1>
+
+  <h2>Monthly Fixed Cost Table</h2>
+  <table id="monthlyFixedCostTable">
+    <tr>
+      <th>ID</th>
+      <th>Call Center Name</th>
+      <th>CTC Slab</th>
+      <th>Management Fees</th>
+      <th>Seat Cost/Infra</th>
+      <th>OT Rate per Hr</th>
+      <th>Retention Cost</th>
+      <th>Effective Date</th>
+    </tr>
+  </table>
+
+ 
+  <!-- Add an edit form in the HTML -->
+  <div id="edit-form" style="display: none;">
+    <input type="text" id="id" placeholder="ID">
+    <input type="text" id="call_center_name" placeholder="Call Center Name">
+    <input type="text" id="ctc_slab" placeholder="CTC Slab">
+    <input type="text" id="management_fees" placeholder="Management Fees">
+    <input type="text" id="ot_rate_per_hr" placeholder="OT Rate Per Hr">
+    <input type="text" id="retention_cost" placeholder="Retention">
+    <!-- Add other input fields for other columns -->
+  
+    <button id="editSubmit">Save</button>
+  </div>
+  
+  
+ <form>
+  <table id="monthlyFixedCostForm">
+  
+  <fieldset>
+      <legend>Monthly Fixed Cost Table</legend>
+    
+      <label for="callCenterName">Call Center Name:</label>
+      <input type="text" id="callCenterName1" name="callCenterName">
+    
+  
+  
+      <label for="managementFees">Management Fees:</label>
+      <input type="text" id="managementFees1" name="managementFees">
+  
+      
+      
+  
+      
+    
+      <!-- Add more input fields for other columns in the table -->
+    </fieldset>
+    
+    <!-- Salary Cost-CTC Form -->
+    <fieldset>
+      <legend>Salary Cost-CTC</legend>
+    
+     
+     
+  
+  
+      <label for="employeeStatus">Employee Status:</label>
+      <input type="text" id="employeeStatus1" name="employeeStatus">
+  
+  
+      <label for="employeeType">Employee Type:</label>
+      <input type="text" id="employeeType1" name="employeeType">
+    
+    
+  
+      
+    </fieldset>
+  </form>
+    
+  
+  
+  <input type="submit" value="Submit" id="submitBtn">
+
+  <table id="ans">
+    <tr>
+      <th>Calculated Cost</th>
+      <td id="calculatedCost"></td>
+    </tr>
+  </table>
+
+</body>
+</html>
