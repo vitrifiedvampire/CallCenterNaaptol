@@ -21,19 +21,32 @@
       <th>Seat Cost/Infra</th>
       <th>OT Rate per Hr</th>
       <th>Retention Cost</th>
-      <th>Effective Date</th>
+      <th>Effective Start Date</th>
+      <th>Effective End Date</th>
     </tr>
   </table>
-
+  <button id="addRowButton">Add Row</button>
+  
  
   <!-- Add an edit form in the HTML -->
   <div id="edit-form" style="display: none;">
     <input type="text" id="id" placeholder="ID">
-    <input type="text" id="call_center_name" placeholder="Call Center Name">
-    <input type="text" id="ctc_slab" placeholder="CTC Slab">
+    <select id="call_center_name">
+      <option value="3i Infotech">3i Infotech</option>
+      <option value="KGISL">KGISL</option>
+      <option value="Ienergizer">Ienergizer</option>
+      <!-- Add more options as needed -->
+    </select>
+    <select id="ctc_slab">
+      <option value="&lt;=10000">&lt;=10000</option>
+      <option value="NA">NA</option>
+      <option value="10001&lt;=1500">10001&lt;=1500</option>
     <input type="text" id="management_fees" placeholder="Management Fees">
+    <input type="text" id="seat_cost_infra" placeholder="Seat Cost/Infra">
     <input type="text" id="ot_rate_per_hr" placeholder="OT Rate Per Hr">
     <input type="text" id="retention_cost" placeholder="Retention">
+    <input type="date" id="effective_start_date" placeholder="Effective Start  Date">
+    <input type="date" id="effective_end_date" placeholder="Effective End Date">
     <!-- Add other input fields for other columns -->
   
     <button id="editSubmit">Save</button>

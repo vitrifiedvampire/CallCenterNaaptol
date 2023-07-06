@@ -81,6 +81,67 @@ app.get('/rowdata/:id', (req, res) => {
   });
 });
   
+// Set up a route to insert a new row into the database
+app.post('/addRow', (req, res) => {
+  const newRowData = {
+    call_center_name: req.body.call_center_name || null,
+    ctc_slab: req.body.ctc_slab || null,
+    management_fees: req.body.management_fees || null,
+    seat_cost_infra: req.body.seat_cost_infra || null,
+    ot_rate_per_hr: req.body.ot_rate_per_hr || null,
+    retention_cost: req.body.retention_cost || null,
+    effective_start_date: req.body.effective_start_date || null,
+    effective_end_date: req.body.effective_end_date || null,
+  };
+
+  // Insert the new row into the monthly_fixed_cost table
+// Insert the new row into the monthly_fixed_cost table
+  pool.query('INSERT INTO monthly_fixed_cost SET ?', newRowData, (error, results) => {
+    if (error) {
+      console.error('Error adding row:', error);
+      res.status(500).send('An error occurred while adding a new row.');
+    } else {
+      // Get the ID of the newly inserted row
+      const newRowId = results.insertId;
+
+      // Send the ID of the newly inserted row as the response
+      res.send(`New row added successfully with ID: ${newRowId}`);
+    }
+  });
+});
+
+
+app.delete("/delete/:id", function (req, res) {
+  var rowId = req.params.id;
+  
+  // Perform the deletion operation (e.g., delete the record from the database)
+  deleteRecord(rowId, function (err) {
+    if (err) {
+      console.error("Error deleting the record:", err);
+      res.status(500).send("Error deleting the record");
+    } else {
+      console.log("Record deleted successfully");
+      res.sendStatus(200);
+    }
+  });
+});
+
+
+// Function to delete a record from the database
+function deleteRecord(rowId, callback) {
+  // Execute the delete query
+  pool.query('DELETE FROM monthly_fixed_cost WHERE id = ?', [rowId], (err, result) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null);
+    }
+  });
+}
+
+
+
+
 
  // Update the record in the database
 // Set up a route to update the record in the database
@@ -98,7 +159,9 @@ app.post('/update/:id', (req, res) => {
       management_fees = ?,
       seat_cost_infra = ?,
       ot_rate_per_hr = ?,
-      retention_cost = ?
+      retention_cost = ?,
+      effective_start_date=?,
+      effective_end_date=?
     WHERE id = ?
   `;
   const values = [
@@ -108,6 +171,8 @@ app.post('/update/:id', (req, res) => {
     updatedData.seat_cost_infra,
     updatedData.ot_rate_per_hr,
     updatedData.retention_cost,
+    updatedData.effective_start_date,
+    updatedData.effective_end_date,
     id // Add the ID value here
   ];
   
