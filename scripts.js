@@ -4,9 +4,30 @@ document.addEventListener("DOMContentLoaded", function () {
   
   var table = document.getElementById("ans");
 
+  function showDashboard(dashboardId) {
+    $(".dashboard").hide();
+    $("#" + dashboardId).show();
+  }
 
+  // Attach click event handlers to show respective dashboards
+  $("#interface1Link").click(function () {
+    showDashboard("interface1");
+  });
   
+  $("#interface2Link").click(function () {
+    showDashboard("interface2");
+  });
 
+  $("#interface3Link").click(function () {
+    showDashboard("interface3");
+  });
+
+  $("#interface4Link").click(function () {
+    showDashboard("interface4");
+  });
+  
+ // By default, show the first dashboard (Interface1)
+ showDashboard("interface1");
   
 
   submitBtn.addEventListener("click", function (event) {
@@ -155,6 +176,7 @@ $(document).ready(function () {
   }
   // Function to append a row to the table
   function appendRowToTable(row) {
+    
     var newRow = $("<tr>");
     newRow.append($("<td>").text(row.id));
     newRow.append($("<td>").text(row.call_center_name));
